@@ -15,16 +15,16 @@
         const { useState } = React;
         const { createRoot } = ReactDOM;
 
-        const [account, setAccount] = useState({
-            fullName: '',
-            username: '',
-            password: '',
-            specialisation: '',
-            yearsOfExperience: 0,
-            biography: ''
-        });
-
         function ReactApp() {
+
+            const [account, setAccount] = useState({
+                fullName: '',
+                username: '',
+                password: '',
+                specialisation: '',
+                yearsOfExperience: 0,
+                biography: ''
+            });
 
             return (
                 <div>
@@ -51,8 +51,22 @@
                         <div>
                             <input
                                 type="password"
-                                onChange={(e) => setAccount.fullName(e.target.value)}
+                                onChange={(e) => setAccount.password(e.target.value)}
                             />
+                        </div>
+                    </div>
+                    <div>
+                        <span>Specializzazione:</span>
+                        <div>
+                            <select
+                                value={account.specialisation}
+                                onChange={(e) => setAccount.specialisation(e.target.value)}
+                            >
+                                <option value="--">-- Seleziona --</option>
+                                <option value="Full stack">Full stack</option>
+                                <option value="Frontend">Frontend</option>
+                                <option value="Backend">Backend</option>
+                            </select>
                         </div>
                     </div>
 
