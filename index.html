@@ -23,7 +23,7 @@
                 password: '',
                 specialisation: '',
                 yearsOfExperience: 0,
-                biography: ''
+                textarea: ''
             });
 
             return (
@@ -66,6 +66,24 @@
                                 <option value="Frontend">Frontend</option>
                                 <option value="Backend">Backend</option>
                             </select>
+                        </div>
+                    </div>
+                    <div>
+                        <span>Anni di esperienza:</span>
+                        <div>
+                            <input
+                                type="number"
+                                onChange={(e) => setAccount.yearsOfExperience(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <span>Breve descrizione:</span>
+                        <div>
+                            <input
+                                type="textarea"
+                                onChange={(e) => setAccount.textarea(e.target.value)}
+                            />
                         </div>
                     </div>
 
