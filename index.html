@@ -26,6 +26,21 @@
                 textarea: ''
             });
 
+            function controlSubmit() {
+                if (
+                    account.fullName === '' ||
+                    account.username === '' ||
+                    account.password === '' ||
+                    account.specialisation === '' ||
+                    account.yearsOfExperience < 0 ||
+                    account.textarea === ''
+                ) {
+                    alert('Per favore, compila tutti i campi.');
+                } else {
+                    console.log(account);
+                }
+            }
+
             return (
                 <div>
                     <div className="fullName">
@@ -82,7 +97,7 @@
                                     })
                                 }
                             >
-                                <option value="--">-- Seleziona --</option>
+                                <option value="">-- Seleziona --</option>
                                 <option value="Full stack">Full stack</option>
                                 <option value="Frontend">Frontend</option>
                                 <option value="Backend">Backend</option>
@@ -118,7 +133,7 @@
                         </div>
                     </div>
                     <div>
-                        <button onClick={() => console.log(account)}>Sign Up</button>
+                        <button onClick={() => controlSubmit()}>Sign Up</button>
                     </div>
                 </div>
             )
