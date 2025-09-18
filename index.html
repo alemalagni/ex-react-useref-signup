@@ -19,13 +19,14 @@
         const { createRoot } = ReactDOM;
 
         function ReactApp() {
-            const signUp = document.querySelector('.btn');
 
             function disattivato() {
+                const signUp = document.querySelector('.btn');
                 signUp.classList.add('disabled')
             }
 
             function attivato() {
+                const signUp = document.querySelector('.btn');
                 signUp.classList.remove('disabled')
             }
 
@@ -146,13 +147,13 @@
                     )
                 } else if (textArea.length < 100) {
                     return (
-                        controlTextArea.innerText = 'La descrizione deve contenere almeno 100 caratteri',
+                        controlTextArea.innerText = 'Almeno 100 caratteri',
                         controlTextArea.style.color = 'red',
                         disattivato()
                     )
                 } else if (textArea.length > 1000) {
                     return (
-                        controlTextArea.innerText = 'La descrizione può contenere massimo 1000 caratteri',
+                        controlTextArea.innerText = 'Massimo 1000 caratteri',
                         controlTextArea.style.color = 'red',
                         disattivato()
                     )
@@ -162,6 +163,17 @@
                         controlTextArea.style.color = 'green',
                         attivato()
                     )
+                }
+            }
+
+            function changeTextNumber(textLength) {
+                const textNumber = document.querySelector('.textNumber');
+                textNumber.innerText = textLength;
+
+                if (textLength < 100 || textLength > 1000) {
+                    textNumber.style.color = 'red';
+                } else {
+                    textNumber.style.color = 'black';
                 }
             }
 
@@ -259,9 +271,9 @@
                         </div>
                     </div>
                     <div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', width: '300px' }}>
                             <span>Breve descrizione:</span>
-                            <span className='textNumber'>n</span>
+                            <span className='textNumber'></span>
                         </div>
 
                         <div style={{ display: 'flex', gap: '20px' }}>
@@ -273,6 +285,7 @@
                                             textArea: e.target.value
                                         });
                                         controlTextArea(e.target.value);
+                                        changeTextNumber(e.target.value.length);
                                     }}
                                 />
                             </div>
