@@ -23,7 +23,7 @@
                 password: '',
                 specialisation: '',
                 yearsOfExperience: 0,
-                textarea: ''
+                textArea: ''
             });
 
             function controlSubmit() {
@@ -33,7 +33,7 @@
                     account.password === '' ||
                     account.specialisation === '' ||
                     account.yearsOfExperience < 0 ||
-                    account.textarea === ''
+                    account.textArea === ''
                 ) {
                     alert('Per favore, compila tutti i campi.');
                 } else {
@@ -81,16 +81,21 @@
                     </div>
                     <div>
                         <span>Password:</span>
-                        <div>
-                            <input
-                                type="password"
-                                onChange={(e) =>
-                                    setAccount({
-                                        ...account,
-                                        password: e.target.value
-                                    })
-                                }
-                            />
+                        <div style={{ display: 'flex', gap: '20px' }}>
+                            <div>
+                                <input
+                                    type="password"
+                                    onChange={(e) =>
+                                        setAccount({
+                                            ...account,
+                                            password: e.target.value
+                                        })
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <span className='controlPassword'></span>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -127,16 +132,21 @@
                     </div>
                     <div>
                         <span>Breve descrizione:</span>
-                        <div>
-                            <input
-                                type="textarea"
-                                onChange={(e) =>
-                                    setAccount({
-                                        ...account,
-                                        textarea: e.target.value
-                                    })
-                                }
-                            />
+                        <div style={{ display: 'flex', gap: '20px' }}>
+                            <div>
+                                <input
+                                    type="textarea"
+                                    onChange={(e) =>
+                                        setAccount({
+                                            ...account,
+                                            textArea: e.target.value
+                                        })
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <span className='controlTextArea'></span>
+                            </div>
                         </div>
                     </div>
                     <div>
