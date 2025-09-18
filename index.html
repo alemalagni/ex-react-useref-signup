@@ -88,6 +88,46 @@
 
             }
 
+            function controlPassword(password) {
+                const controlPassword = document.querySelector('.controlPassword');
+                let hasLetter = false;
+                let hasNumber = false;
+                let hasSymbol = false;
+
+                for (let i = 0; i < password.length; i++) {
+                    let char = password[i];
+                    if (letters.includes(char) || letters.toUpperCase().includes(char)) hasLetter = true;
+                    else if (numbers.includes(char)) hasNumber = true;
+                    else if (symbols.includes(char)) hasSymbol = true;
+                }
+
+                if (password.length === 0) {
+                    return (
+                        controlPassword.innerText = '',
+                        controlPassword.style.color = 'black',
+                        signUp.classList.add('disabled')
+                    )
+                } else if (password.length < 8) {
+                    return (
+                        controlPassword.innerText = 'Password deve contenere almeno 8 caratteri',
+                        controlPassword.style.color = 'red',
+                        signUp.classList.add('disabled')
+                    )
+                } else if (!hasLetter || !hasNumber || !hasSymbol) {
+                    return (
+                        controlPassword.innerText = 'Password deve contenere almeno una lettera, un numero e un simbolo',
+                        controlPassword.style.color = 'red',
+                        signUp.classList.add('disabled')
+                    )
+                } else {
+                    return (
+                        controlPassword.innerText = 'Password valida',
+                        controlPassword.style.color = 'green',
+                        signUp.classList.remove('disabled')
+                    )
+                }
+            }
+
             return (
                 <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', paddingTop: '30vh', gap: '10px', paddingLeft: '45vw' }}>
                     <div className="fullName">
@@ -134,11 +174,13 @@
                             <div>
                                 <input
                                     type="password"
-                                    onChange={(e) =>
+                                    onChange={(e) => {
                                         setAccount({
                                             ...account,
                                             password: e.target.value
                                         })
+                                        controlPassword(e.target.value);
+                                    }
                                     }
                                 />
                             </div>
