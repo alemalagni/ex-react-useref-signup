@@ -70,7 +70,7 @@
                     )
                 } else if (username.length < 6) {
                     return (
-                        controlUsername.innerText = 'Username deve conterene almeno 6 caratteri alfanumerici',
+                        controlUsername.innerText = 'Almeno 6 caratteri alfanumerici',
                         controlUsername.style.color = 'red',
                         disattivato()
                     )
@@ -117,13 +117,13 @@
                     )
                 } else if (password.length < 8) {
                     return (
-                        controlPassword.innerText = 'Password deve contenere almeno 8 caratteri',
+                        controlPassword.innerText = 'Almeno 8 caratteri',
                         controlPassword.style.color = 'red',
                         disattivato()
                     )
                 } else if (!hasLetter || !hasNumber || !hasSymbol) {
                     return (
-                        controlPassword.innerText = 'Password deve contenere almeno una lettera, un numero e un simbolo',
+                        controlPassword.innerText = 'Almeno una lettera, un numero e un simbolo',
                         controlPassword.style.color = 'red',
                         disattivato()
                     )
