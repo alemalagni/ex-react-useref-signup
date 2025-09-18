@@ -41,6 +41,46 @@
                 }
             }
 
+            const letters = "abcdefghijklmnopqrstuvwxyz";
+            const numbers = "0123456789";
+            const symbols = `!@#$%^&*()-_=+[]{}|;:'\\",.<>?/\`~`;
+
+            function controlUsername(username) {
+                const controlUsername = document.querySelector('.controlUsername');
+                const allowed = letters + letters.toUpperCase() + numbers;
+
+                if (username.length === 0) {
+                    return (
+                        controlUsername.innerText = '',
+                        controlUsername.style.color = 'black'
+                    )
+                } else if (username.length < 6) {
+                    return (
+                        controlUsername.innerText = 'Username deve conterene almeno 6 caratteri alfanumerici',
+                        controlUsername.style.color = 'red'
+                    )
+                } else {
+                    let control = true;
+                    for (let i = 0; i < username.length; i++) {
+                        let char = username[i];
+                        if (!allowed.includes(char)) control = false;
+                    }
+
+                    if (control) {
+                        return (
+                            controlUsername.innerText = 'Username valido',
+                            controlUsername.style.color = 'green'
+                        )
+                    } else {
+                        return (
+                            controlUsername.innerText = 'Username non valido',
+                            controlUsername.style.color = 'red'
+                        );;
+                    }
+                }
+
+            }
+
             return (
                 <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', paddingTop: '30vh', gap: '10px', paddingLeft: '45vw' }}>
                     <div className="fullName">
@@ -66,11 +106,14 @@
                             <div>
                                 <input
                                     type="text"
-                                    onChange={(e) =>
+                                    onChange={(e) => {
+                                        e.preventDefault();
                                         setAccount({
                                             ...account,
                                             username: e.target.value
                                         })
+                                        controlUsername(e.target.value);
+                                    }
                                     }
                                 />
                             </div>
