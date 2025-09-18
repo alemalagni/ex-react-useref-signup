@@ -21,6 +21,14 @@
         function ReactApp() {
             const signUp = document.querySelector('.btn');
 
+            function disattivato() {
+                signUp.classList.add('disabled')
+            }
+
+            function attivato() {
+                signUp.classList.remove('disabled')
+            }
+
             const [account, setAccount] = useState({
                 fullName: '',
                 username: '',
@@ -57,13 +65,13 @@
                     return (
                         controlUsername.innerText = '',
                         controlUsername.style.color = 'black',
-                        signUp.classList.add('disabled')
+                        disattivato()
                     )
                 } else if (username.length < 6) {
                     return (
                         controlUsername.innerText = 'Username deve conterene almeno 6 caratteri alfanumerici',
                         controlUsername.style.color = 'red',
-                        signUp.classList.add('disabled')
+                        disattivato()
                     )
                 } else {
                     let control = true;
@@ -76,7 +84,7 @@
                         return (
                             controlUsername.innerText = 'Username valido',
                             controlUsername.style.color = 'green',
-                            signUp.classList.remove('disabled')
+                            attivato()
                         )
                     } else {
                         return (
@@ -105,25 +113,25 @@
                     return (
                         controlPassword.innerText = '',
                         controlPassword.style.color = 'black',
-                        signUp.classList.add('disabled')
+                        disattivato()
                     )
                 } else if (password.length < 8) {
                     return (
                         controlPassword.innerText = 'Password deve contenere almeno 8 caratteri',
                         controlPassword.style.color = 'red',
-                        signUp.classList.add('disabled')
+                        disattivato()
                     )
                 } else if (!hasLetter || !hasNumber || !hasSymbol) {
                     return (
                         controlPassword.innerText = 'Password deve contenere almeno una lettera, un numero e un simbolo',
                         controlPassword.style.color = 'red',
-                        signUp.classList.add('disabled')
+                        disattivato()
                     )
                 } else {
                     return (
                         controlPassword.innerText = 'Password valida',
                         controlPassword.style.color = 'green',
-                        signUp.classList.remove('disabled')
+                        attivato()
                     )
                 }
             }
