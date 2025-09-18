@@ -42,20 +42,25 @@
             }
 
             return (
-                <div>
+                <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', paddingTop: '30vh', gap: '10px', paddingLeft: '45vw' }}>
                     <div className="fullName">
                         <span>Nome completo:</span>
                         <div>
-                            <input
-                                type="text"
-                                value={account.fullName}
-                                onChange={(e) =>
-                                    setAccount({
-                                        ...account,
-                                        fullName: e.target.value
-                                    })
-                                }
-                            />
+                            <div>
+                                <input
+                                    type="text"
+                                    value={account.fullName}
+                                    onChange={(e) =>
+                                        setAccount({
+                                            ...account,
+                                            fullName: e.target.value
+                                        })
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <span className='controlUsername' style={{ display: 'flex', gap: '20px' }}> prova</span>
+                            </div>
                         </div>
                     </div>
                     <div>
