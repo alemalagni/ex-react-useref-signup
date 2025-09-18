@@ -93,7 +93,6 @@
                         );;
                     }
                 }
-
             }
 
             function controlPassword(password) {
@@ -136,8 +135,38 @@
                 }
             }
 
+            function controlTextArea(textArea) {
+                const controlTextArea = document.querySelector('.controlTextArea');
+
+                if (textArea.length === 0) {
+                    return (
+                        controlTextArea.innerText = '',
+                        controlTextArea.style.color = 'black',
+                        disattivato()
+                    )
+                } else if (textArea.length < 100) {
+                    return (
+                        controlTextArea.innerText = 'La descrizione deve contenere almeno 100 caratteri',
+                        controlTextArea.style.color = 'red',
+                        disattivato()
+                    )
+                } else if (textArea.length > 1000) {
+                    return (
+                        controlTextArea.innerText = 'La descrizione può contenere massimo 1000 caratteri',
+                        controlTextArea.style.color = 'red',
+                        disattivato()
+                    )
+                } else {
+                    return (
+                        controlTextArea.innerText = 'Descrizione valida',
+                        controlTextArea.style.color = 'green',
+                        attivato()
+                    )
+                }
+            }
+
             return (
-                <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', paddingTop: '30vh', gap: '10px', paddingLeft: '45vw' }}>
+                <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', paddingTop: '30px', gap: '10px', paddingLeft: '45vw' }}>
                     <div className="fullName">
                         <span>Nome completo:</span>
                         <div>
@@ -230,17 +259,21 @@
                         </div>
                     </div>
                     <div>
-                        <span>Breve descrizione:</span>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <span>Breve descrizione:</span>
+                            <span className='textNumber'>n</span>
+                        </div>
+
                         <div style={{ display: 'flex', gap: '20px' }}>
                             <div>
-                                <input
-                                    type="textarea"
-                                    onChange={(e) =>
+                                <textarea style={{ padding: '10px', width: '300px', height: '100px', resize: 'vertical', lineHeight: '1.4' }}
+                                    onChange={(e) => {
                                         setAccount({
                                             ...account,
                                             textArea: e.target.value
-                                        })
-                                    }
+                                        });
+                                        controlTextArea(e.target.value);
+                                    }}
                                 />
                             </div>
                             <div>
