@@ -45,7 +45,7 @@
                 <div style={{ display: 'flex', flexFlow: 'column', alignItems: 'start', paddingTop: '30vh', gap: '10px', paddingLeft: '45vw' }}>
                     <div className="fullName">
                         <span>Nome completo:</span>
-                        <div style={{ display: 'flex', gap: '20px' }}>
+                        <div>
                             <div>
                                 <input
                                     type="text"
@@ -58,23 +58,25 @@
                                     }
                                 />
                             </div>
-                            <div>
-                                <span className='controlUsername'> prova</span>
-                            </div>
                         </div>
                     </div>
                     <div>
                         <span>Username:</span>
-                        <div>
-                            <input
-                                type="text"
-                                onChange={(e) =>
-                                    setAccount({
-                                        ...account,
-                                        username: e.target.value
-                                    })
-                                }
-                            />
+                        <div style={{ display: 'flex', gap: '20px' }}>
+                            <div>
+                                <input
+                                    type="text"
+                                    onChange={(e) =>
+                                        setAccount({
+                                            ...account,
+                                            username: e.target.value
+                                        })
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <span className='controlUsername'></span>
+                            </div>
                         </div>
                     </div>
                     <div>
