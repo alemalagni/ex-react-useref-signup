@@ -15,7 +15,7 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        const { useState } = React;
+        const { useState, useRef } = React;
         const { createRoot } = ReactDOM;
 
         function ReactApp() {
@@ -38,6 +38,10 @@
                 yearsOfExperience: 0,
                 textArea: ''
             });
+
+            const fullNameRef = useRef();
+            const specialisationRef = useRef();
+            const yearsOfExperienceRef = useRef();
 
             function controlSubmit() {
                 if (
@@ -186,6 +190,7 @@
                                 <input
                                     type="text"
                                     value={account.fullName}
+                                    ref={fullNameRef}
                                     onChange={(e) =>
                                         setAccount({
                                             ...account,
@@ -242,6 +247,7 @@
                         <span>Specializzazione:</span>
                         <div>
                             <select
+                                ref={specialisationRef}
                                 onChange={(e) =>
                                     setAccount({
                                         ...account,
@@ -261,6 +267,7 @@
                         <div>
                             <input
                                 type="number"
+                                ref={yearsOfExperienceRef}
                                 onChange={(e) =>
                                     setAccount({
                                         ...account,
